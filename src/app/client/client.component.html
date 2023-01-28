@@ -1,0 +1,39 @@
+<div class="container">
+
+  <div>
+    <button (click)="openDialogNewClient()" mat-button class="btn btn-primary">+</button>
+  </div>
+
+  <div class="outline-box" style="margin-top: 32px">
+    <mat-table #table [dataSource]="dataSource">
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+        <mat-cell *matCellDef="let client">{{client.id}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="nume">
+        <mat-header-cell *matHeaderCellDef>Nume</mat-header-cell>
+        <mat-cell *matCellDef="let client">{{client.nume}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="prenume">
+        <mat-header-cell *matHeaderCellDef>Prenume</mat-header-cell>
+        <mat-cell *matCellDef="let client">{{client.prenume}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+        <mat-cell *matCellDef="let client">{{client.email}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="numarTelefon">
+        <mat-header-cell *matHeaderCellDef>Numar telefon</mat-header-cell>
+        <mat-cell *matCellDef="let client">{{client.numarTelefon}}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+    </mat-table>
+  </div>
+</div>

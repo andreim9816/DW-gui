@@ -1,0 +1,24 @@
+<div class="container default-padding">
+  <h2>Destinatie noua</h2>
+
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <div class="container">
+
+      <mat-form-field appearance="fill">
+        <input formControlName="id" matInput placeholder="Id" type="text">
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill">
+        <input formControlName="oras" matInput placeholder="Oras" type="text">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <input formControlName="stat" matInput placeholder="Stat" type="text">
+      </mat-form-field>
+
+      <button class="btn btn-primary" type="submit">Save</button>
+    </div>
+
+  </form>
+</div>
