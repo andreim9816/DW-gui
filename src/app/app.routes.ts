@@ -12,6 +12,7 @@ import {ClasaZborWhComponent} from "./wh/clasa-zbor-wh/clasa-zbor-wh.component";
 import {DestinatieWhComponent} from "./wh/destinatie-wh/destinatie-wh.component";
 import {ZborWhComponent} from "./wh/zbor-wh/zbor-wh.component";
 import {TimpWhComponent} from "./wh/timp-wh/timp-wh.component";
+import {RezervareWhComponent} from "./wh/rezervare-wh/rezervare-wh.component";
 
 export const ROUTES: Routes = [
   {path: 'operator-zbor', component: OperatorComponent},
@@ -28,7 +29,7 @@ export const ROUTES: Routes = [
   {path: 'destinatie-wh', component: DestinatieWhComponent},
   {path: 'zbor-wh', component: ZborWhComponent},
   {path: 'timp-wh', component: TimpWhComponent},
-  {path: 'rezervare-wh', component: RezervariComponent},
+  {path: 'rezervare-wh', component: RezervareWhComponent},
 
   {path: '**', redirectTo: ''}
 ];

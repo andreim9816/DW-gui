@@ -2,18 +2,20 @@ import {CollectionViewer, DataSource} from "@angular/cdk/collections";
 import {BehaviorSubject, catchError, finalize, Observable, of} from "rxjs";
 import {ZborService} from "../../services/zbor.service";
 import {ZborDtoWH} from "../../model/ZborDtoWH";
+import {RezervareDtoWH} from "../../model/RezervareDtoWH";
+import {RezervareService} from "../../services/rezervare.service";
 
-export class ZborWHDataSource implements DataSource<ZborDtoWH> {
+export class RezervareWHDataSource implements DataSource<RezervareDtoWH> {
 
-  lessonsSubject = new BehaviorSubject<ZborDtoWH[]>([]);
+  lessonsSubject = new BehaviorSubject<RezervareDtoWH[]>([]);
   private loadingSubject = new BehaviorSubject<boolean>(false);
 
   public loading$ = this.loadingSubject.asObservable();
 
-  constructor(private zborService: ZborService) {
+  constructor(private rezervareService: RezervareService) {
   }
 
-  connect(collectionViewer: CollectionViewer): Observable<ZborDtoWH[]> {
+  connect(collectionViewer: CollectionViewer): Observable<RezervareDtoWH[]> {
     return this.lessonsSubject.asObservable();
   }
 
@@ -26,10 +28,10 @@ export class ZborWHDataSource implements DataSource<ZborDtoWH> {
 
     this.loadingSubject.next(true);
 
-    this.zborService.getAllWH(filter, sortDirection, pageIndex, pageSize).pipe(
+    this.rezervareService.getAllWH(filter, sortDirection, pageIndex, pageSize).pipe(
       catchError(() => of([])),
       finalize(() => this.loadingSubject.next(false))
     )
-      .subscribe(zboruri => this.lessonsSubject.next(zboruri));
+      .subscribe(rezervari => this.lessonsSubject.next(rezervari));
   }
 }

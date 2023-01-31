@@ -1,0 +1,72 @@
+<div class="container">
+
+  <div class="outline-box" style="margin-top: 32px">
+    <mat-table #table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="pasageri">
+        <mat-header-cell *matHeaderCellDef>Pasageri</mat-header-cell>
+        <mat-cell *matCellDef="let rezervare">{{rezervare.nrPasageri}}: {{rezervare.nrPasageriFemei}}F
+          / {{rezervare.nrPasageriBarbati}}B
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="sumaTotala">
+        <mat-header-cell *matHeaderCellDef>Suma</mat-header-cell>
+        <mat-cell *matCellDef="let rezervare">{{rezervare.sumaTotala}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="clientId">
+        <mat-header-cell *matHeaderCellDef>Client id</mat-header-cell>
+        <mat-cell *matCellDef="let rezervare">{{rezervare.clientId}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="dataRezervare">
+        <mat-header-cell *matHeaderCellDef>Data rezervare</mat-header-cell>
+        <mat-cell *matCellDef="let rezervare">{{rezervare.dataRezervareId | date:'MM-dd-yyyy hh:mm'}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="dataPlecare">
+        <mat-header-cell *matHeaderCellDef>Data plecare</mat-header-cell>
+        <mat-cell *matCellDef="let rezervare">{{rezervare.dataPlecareId | date:'MM-dd-yyyy hh:mm'}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="dataSosire">
+        <mat-header-cell *matHeaderCellDef>Data sosire</mat-header-cell>
+        <mat-cell *matCellDef="let rezervare">{{rezervare.dataSosireId | date:'MM-dd-yyyy hh:mm'}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="destinatii">
+        <mat-header-cell *matHeaderCellDef>Destinatii</mat-header-cell>
+        <mat-cell *matCellDef="let rezervare">{{rezervare.locatiePlecareId}} -> {{rezervare.locatieSosireId}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="operatorZborId">
+        <mat-header-cell *matHeaderCellDef>Operator</mat-header-cell>
+        <mat-cell *matCellDef="let rezervare">{{rezervare.operatorZborId}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="zborId">
+        <mat-header-cell *matHeaderCellDef>Zbor id</mat-header-cell>
+        <mat-cell *matCellDef="let rezervare">{{rezervare.zborId}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="clasaZborId">
+        <mat-header-cell *matHeaderCellDef>Clasa zbor id</mat-header-cell>
+        <mat-cell *matCellDef="let rezervare">{{rezervare.clasaZborId}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="metodaPlataId">
+        <mat-header-cell *matHeaderCellDef>Metoda plata id</mat-header-cell>
+        <mat-cell *matCellDef="let rezervare">{{rezervare.metodaPlataId}}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+    </mat-table>
+
+    <mat-paginator [length]="dataSource.lessonsSubject.getValue().length" [pageSize]="20"
+                   [pageSizeOptions]="[20, 50, 100]"></mat-paginator>
+
+  </div>
+</div>

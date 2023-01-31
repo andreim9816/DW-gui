@@ -42,6 +42,7 @@ import { ClasaZborWhComponent } from './wh/clasa-zbor-wh/clasa-zbor-wh.component
 import { DestinatieWhComponent } from './wh/destinatie-wh/destinatie-wh.component';
 import { ZborWhComponent } from './wh/zbor-wh/zbor-wh.component';
 import { TimpWhComponent } from './wh/timp-wh/timp-wh.component';
+import { RezervareWhComponent } from './wh/rezervare-wh/rezervare-wh.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -67,7 +68,8 @@ import { TimpWhComponent } from './wh/timp-wh/timp-wh.component';
     ClasaZborWhComponent,
     DestinatieWhComponent,
     ZborWhComponent,
-    TimpWhComponent
+    TimpWhComponent,
+    RezervareWhComponent
   ],
     imports: [
         BrowserModule,
