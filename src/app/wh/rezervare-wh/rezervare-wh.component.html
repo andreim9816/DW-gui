@@ -22,17 +22,17 @@
 
       <ng-container matColumnDef="dataRezervare">
         <mat-header-cell *matHeaderCellDef>Data rezervare</mat-header-cell>
-        <mat-cell *matCellDef="let rezervare">{{rezervare.dataRezervareId | date:'MM-dd-yyyy hh:mm'}}</mat-cell>
+        <mat-cell *matCellDef="let rezervare">{{rezervare.dataRezervareId | date:'MM-dd-yyyy H:mm'}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="dataPlecare">
         <mat-header-cell *matHeaderCellDef>Data plecare</mat-header-cell>
-        <mat-cell *matCellDef="let rezervare">{{rezervare.dataPlecareId | date:'MM-dd-yyyy hh:mm'}}</mat-cell>
+        <mat-cell *matCellDef="let rezervare">{{rezervare.dataPlecareId | date:'MM-dd-yyyy H:mm'}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="dataSosire">
         <mat-header-cell *matHeaderCellDef>Data sosire</mat-header-cell>
-        <mat-cell *matCellDef="let rezervare">{{rezervare.dataSosireId | date:'MM-dd-yyyy hh:mm'}}</mat-cell>
+        <mat-cell *matCellDef="let rezervare">{{rezervare.dataSosireId | date:'MM-dd-yyyy H:mm'}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="destinatii">

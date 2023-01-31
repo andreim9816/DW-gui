@@ -46,12 +46,12 @@
 
       <ng-container matColumnDef="dataPlecare">
         <mat-header-cell *matHeaderCellDef>Data plecare</mat-header-cell>
-        <mat-cell *matCellDef="let zbor">{{zbor.dataPlecare | date:'MM-dd-yyyy hh:m'}}</mat-cell>
+        <mat-cell *matCellDef="let zbor">{{zbor.dataPlecare | date:'MM-dd-yyyy H:mm'}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="dataSosire">
         <mat-header-cell *matHeaderCellDef>Data sosire</mat-header-cell>
-        <mat-cell *matCellDef="let zbor">{{zbor.dataSosire | date:'MM-dd-yyyy hh:m'}}</mat-cell>
+        <mat-cell *matCellDef="let zbor">{{zbor.dataSosire | date:'MM-dd-yyyy H:mm'}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="locatiePlecareId">
