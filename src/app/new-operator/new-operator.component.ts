@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ClasaZborService} from "../services/clasa-zbor.service";
 import {OperatorZborService} from "../services/operator-zbor.service";
 
 @Component({
   selector: 'app-new-operator',
   templateUrl: './new-operator.component.html',
-  styleUrls: ['./new-operator.component.css']
+  styleUrls: ['./new-operator.component.scss']
 })
 export class NewOperatorComponent {
   form: FormGroup;
+
   constructor(private fb: FormBuilder,
               private service: OperatorZborService) {
     this.createForm();

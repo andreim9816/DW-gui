@@ -2,26 +2,26 @@
   <h2>Client</h2>
 
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
-    <div class="container">
+    <div class="row-1">
+      <div class="column-1">
+        <mat-form-field appearance="fill">
+          <input formControlName="nume" matInput placeholder="Nume" type="text">
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <input formControlName="nume" matInput placeholder="Nume" type="text">
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <input formControlName="prenume" matInput placeholder="Prenume" type="text">
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <input formControlName="prenume" matInput placeholder="Prenume" type="text">
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <input formControlName="email" matInput placeholder="Email" type="text">
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <input formControlName="email" matInput placeholder="Email" type="text">
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <input formControlName="numarTelefon" matInput placeholder="Numar telefon" type="text">
+        </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <input formControlName="numarTelefon" matInput placeholder="Numar telefon" type="text">
-      </mat-form-field>
-
-      <button class="btn btn-primary" type="submit">Save</button>
+        <button class="btn btn-primary" type="submit">Save</button>
+      </div>
     </div>
-
   </form>
 </div>

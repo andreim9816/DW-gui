@@ -4,7 +4,7 @@ export interface ZborDto {
   aeronavaId: string;
   durata: number;
   distanta: number;
-  total_locuri: number;
+  totalLocuri: number;
   anulat: boolean;
   dataPlecare: Date;
   dataSosire: Date;

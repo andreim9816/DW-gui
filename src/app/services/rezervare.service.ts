@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {URL} from "../util/URL";
-import {OperatorZborDto} from "../model/OperatorZborDto";
 import {RezervareDto} from "../model/RezervareDto";
 
 const httpOptions = {
@@ -12,11 +11,23 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root',
 })
-export class ZborService {
+export class RezervareService {
   constructor(private http: HttpClient) {
   }
 
-  getAll(): Observable<[RezervareDto]> {
-    return this.http.get<[RezervareDto]>(URL.REZERVARE_URL_OLTP, httpOptions);
+  getAll(filter = '', sortOrder = 'desc',
+         pageNumber = 0, pageSize = 20): Observable<[RezervareDto]> {
+    return this.http.get<[RezervareDto]>(URL.REZERVARE_URL_OLTP,
+      {
+        params: new HttpParams()
+          .set('filter', filter)
+          .set('sortOrder', sortOrder)
+          .set('pageNumber', pageNumber)
+          .set('pageSize', pageSize.toString())
+      });
+  }
+
+  add(body: any): Observable<RezervareDto> {
+    return this.http.post<RezervareDto>(URL.REZERVARE_URL_OLTP, body, httpOptions);
   }
 }

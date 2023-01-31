@@ -1,0 +1,48 @@
+<div class="container default-padding">
+  <h2>Rezervare noua</h2>
+
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <div class="row-1">
+      <div class="column-1">
+
+        <mat-form-field appearance="fill">
+          <input formControlName="nrPasageriFemei" matInput placeholder="Nr pasageri barbati" type="text">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <input formControlName="nrPasageriBarbati" matInput placeholder="Nr pasageri femei" type="text">
+        </mat-form-field>
+
+<!--        <mat-form-field appearance="fill">-->
+<!--          <input formControlName="dataRezervare" matInput placeholder="Data rezervare" type="text">-->
+<!--        </mat-form-field>-->
+
+        <mat-form-field appearance="fill">
+          <input formControlName="sumaTotala" matInput placeholder="Suma totala" type="text">
+        </mat-form-field>
+      </div>
+
+      <mat-divider [vertical]="true" class="column-1"></mat-divider>
+
+      <div class="column-1">
+
+        <mat-form-field appearance="fill">
+          <input formControlName="clientId" matInput placeholder="Client id" type="text">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <input formControlName="zborId" matInput placeholder="Zbor id" type="text">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <input formControlName="clasaZborId" matInput placeholder="Clasa zbor id" type="text">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <input formControlName="metodaPlataId" matInput placeholder="Metoda plata id" type="text">
+        </mat-form-field>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Save</button>
+  </form>
+</div>

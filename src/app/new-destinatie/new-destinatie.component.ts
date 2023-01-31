@@ -6,7 +6,7 @@ import {DestinatieService} from "../services/destinatie.service";
 @Component({
   selector: 'app-new-destinatie',
   templateUrl: './new-destinatie.component.html',
-  styleUrls: ['./new-destinatie.component.css']
+  styleUrls: ['./new-destinatie.component.scss']
 })
 export class NewDestinatieComponent {
   form: FormGroup;

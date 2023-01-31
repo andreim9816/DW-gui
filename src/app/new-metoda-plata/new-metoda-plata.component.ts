@@ -6,7 +6,7 @@ import {MetodaPlataService} from "../services/metoda-plata.service";
 @Component({
   selector: 'app-new-metoda-plata',
   templateUrl: './new-metoda-plata.component.html',
-  styleUrls: ['./new-metoda-plata.component.css']
+  styleUrls: ['./new-metoda-plata.component.scss']
 })
 export class NewMetodaPlataComponent {
   form: FormGroup;

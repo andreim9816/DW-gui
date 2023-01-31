@@ -29,6 +29,13 @@ import { NewOperatorComponent } from './new-operator/new-operator.component';
 import { NewMetodaPlataComponent } from './new-metoda-plata/new-metoda-plata.component';
 import { NewDestinatieComponent } from './new-destinatie/new-destinatie.component';
 import { NewClientComponent } from './new-client/new-client.component';
+import { ZborComponent } from './zbor/zbor.component';
+import { NewZborComponent } from './new-zbor/new-zbor.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import { RezervariComponent } from './rezervari/rezervari.component';
+import {CdkListbox} from "@angular/cdk/listbox";
+import { NewRezervareComponent } from './new-rezervare/new-rezervare.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -44,30 +51,37 @@ import { NewClientComponent } from './new-client/new-client.component';
     NewOperatorComponent,
     NewMetodaPlataComponent,
     NewDestinatieComponent,
-    NewClientComponent
+    NewClientComponent,
+    ZborComponent,
+    NewZborComponent,
+    RezervariComponent,
+    NewRezervareComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    BrowserModule,
-    RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules}),
-    FormsModule,
-    ReactiveFormsModule,
-    NoopAnimationsModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatOptionModule,
-    MatDialogModule,
-    MatInputModule,
-    MatRippleModule,
-    MatDividerModule,
-    MatTableModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatSelectModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        BrowserModule,
+        RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules}),
+        FormsModule,
+        ReactiveFormsModule,
+        NoopAnimationsModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatOptionModule,
+        MatDialogModule,
+        MatInputModule,
+        MatRippleModule,
+        MatDividerModule,
+        MatTableModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatPaginatorModule,
+        MatCheckboxModule,
+        CdkListbox
+    ],
 })
 export class AppModule {
 }

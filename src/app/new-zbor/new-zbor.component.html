@@ -1,0 +1,81 @@
+<div class="container default-padding">
+  <h2>Zbor nou</h2>
+
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <div class="row-1">
+      <div class="column-1">
+
+        <!--        <mat-form-field appearance="fill">-->
+        <!--          <input formControlName="id" matInput placeholder="Id" type="text">-->
+        <!--        </mat-form-field>-->
+
+        <mat-form-field appearance="fill">
+          <input formControlName="operatorId" matInput placeholder="Operator Id" type="text">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <input formControlName="aeronavaId" matInput placeholder="Aeronava Id" type="text">
+        </mat-form-field>
+
+      </div>
+
+      <mat-divider [vertical]="true" class="column-1"></mat-divider>
+
+      <div class="column-1">
+
+        <mat-form-field appearance="fill">
+          <input formControlName="distanta" matInput placeholder="Distanta" type="text">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <input formControlName="totalLocuri" matInput placeholder="Total locuri" type="text">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <input formControlName="locatiePlecareId" matInput placeholder="Locatie plecare id" type="text">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <input formControlName="locatieSosireId" matInput placeholder="Locatie sosire id" type="text">
+        </mat-form-field>
+
+      </div>
+
+      <mat-divider [vertical]="true" class="column-1"></mat-divider>
+
+      <div class="column-1">
+
+        <!--        <mat-form-field>-->
+        <!--          <mat-checkbox formControlName="anulat">Anulat</mat-checkbox>-->
+        <!--        </mat-form-field>-->
+
+        <mat-form-field appearance="fill">
+          <mat-label>Data plecare</mat-label>
+          <input formControlName="dataPlecare" matInput placeholder="Data plecare" type="datetime-local">
+        </mat-form-field>
+
+<!--        <mat-form-field appearance="fill">-->
+<!--          <input formControlName="oraPlecare" type="number" min="0" max="23" step="1">-->
+<!--        </mat-form-field>-->
+
+<!--        <mat-form-field appearance="fill">-->
+<!--          <input formControlName="minutPlecare" type="number" min="0" max="60" step="1">-->
+<!--        </mat-form-field>-->
+
+
+        <mat-form-field appearance="fill">
+          <input formControlName="dataSosire" matInput placeholder="Data sosire" type="datetime-local">
+        </mat-form-field>
+
+<!--        <mat-form-field appearance="fill">-->
+<!--          <input formControlName="oraSosire" type="number" min="0" max="23" step="1">-->
+<!--        </mat-form-field>-->
+
+<!--        <mat-form-field appearance="fill">-->
+<!--          <input formControlName="minutSosire" type="number" min="0" max="60" step="1">-->
+<!--        </mat-form-field>-->
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Save</button>
+  </form>
+</div>

@@ -5,7 +5,7 @@ import {ClasaZborService} from "../services/clasa-zbor.service";
 @Component({
   selector: 'app-new-clasa-zbor',
   templateUrl: './new-clasa-zbor.component.html',
-  styleUrls: ['./new-clasa-zbor.component.css']
+  styleUrls: ['./new-clasa-zbor.component.scss']
 })
 export class NewClasaZborComponent {
   form: FormGroup;

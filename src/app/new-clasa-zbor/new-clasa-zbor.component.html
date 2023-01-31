@@ -2,13 +2,13 @@
   <h2>Clasa noua</h2>
 
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
-    <div class="container">
-
-      <mat-form-field appearance="fill">
-        <input formControlName="denumire" matInput placeholder="Denumire" type="text">
-      </mat-form-field>
-      <button class="btn btn-primary" type="submit">Save</button>
+    <div class="row-1">
+      <div class="column-1">
+        <mat-form-field appearance="fill">
+          <input formControlName="denumire" matInput placeholder="Denumire" type="text">
+        </mat-form-field>
+        <button class="btn btn-primary" type="submit">Save</button>
+      </div>
     </div>
-
   </form>
 </div>
