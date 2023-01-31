@@ -36,4 +36,8 @@ export class URL {
 
   static readonly REZERVARE_URL_WH = URL.API_URL + '/rezervari/WH';
   static readonly REZERVARE_URL_OLTP = URL.API_URL + '/rezervari/OLTP';
+
+  ///////////////////////////////////////////////////////////////////////////////////
+
+  static readonly TIMP_URL_WH = URL.API_URL + '/timpi/WH';
 }

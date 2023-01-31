@@ -1,19 +1,37 @@
-<mat-toolbar style="margin-bottom: 24px">
+<mat-toolbar style="margin-bottom: 48px">
   <mat-toolbar-row>
     <div style="position:absolute; left: 0">
-      <a mat-button routerLink="/">
-        <img alt="Logo" src="favicon.ico">
-      </a>
+<!--      <a mat-button routerLink="/">-->
+<!--        <img alt="Logo" src="favicon.ico">-->
+<!--      </a>-->
 
-      <a mat-button routerLink="/operator-zbor" routerLinkActive="active">Operatori de zbor</a>
-      <a mat-button routerLink="/clasa-zbor" routerLinkActive="active">Clase zbor</a>
-      <a mat-button routerLink="/metoda-plata" routerLinkActive="active">Metode plata</a>
-      <a mat-button routerLink="/destinatie" routerLinkActive="active">Destinatii</a>
-      <a mat-button routerLink="/client" routerLinkActive="active">Clienti</a>
-      <a mat-button routerLink="/zbor" routerLinkActive="active">Zboruri</a>
-      <a mat-button routerLink="/rezervare" routerLinkActive="active">Rezervari</a>
+      <div style="display:flex;flex-direction:column;flex-wrap:nowrap;">
+
+        <div class="row-1">
+
+          <a>OLTP:</a>
+          <a mat-button routerLink="/operator-zbor" routerLinkActive="active">Operatori de zbor</a>
+          <a mat-button routerLink="/clasa-zbor" routerLinkActive="active">Clase zbor</a>
+          <a mat-button routerLink="/metoda-plata" routerLinkActive="active">Metode plata</a>
+          <a mat-button routerLink="/destinatie" routerLinkActive="active">Destinatii</a>
+          <a mat-button routerLink="/client" routerLinkActive="active">Clienti</a>
+          <a mat-button routerLink="/zbor" routerLinkActive="active">Zboruri</a>
+          <a mat-button routerLink="/rezervare" routerLinkActive="active">Rezervari</a>
+        </div>
+
+        <div class="row-1">
+
+          <a>Warehouse:</a>
+          <a mat-button routerLink="/operator-zbor-wh" routerLinkActive="active">Operatori de zbor</a>
+          <a mat-button routerLink="/clasa-zbor-wh" routerLinkActive="active">Clase zbor</a>
+          <a mat-button routerLink="/metoda-plata-wh" routerLinkActive="active">Metode plata</a>
+          <a mat-button routerLink="/destinatie-wh" routerLinkActive="active">Destinatii</a>
+          <a mat-button routerLink="/zbor-wh" routerLinkActive="active">Zboruri</a>
+          <a mat-button routerLink="/timp-wh" routerLinkActive="active">Timpi</a>
+          <a mat-button routerLink="/rezervare" routerLinkActive="active">Rezervari</a>
+        </div>
+      </div>
     </div>
 
   </mat-toolbar-row>
-
 </mat-toolbar>

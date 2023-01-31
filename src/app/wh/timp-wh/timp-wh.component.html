@@ -1,0 +1,43 @@
+<div class="container">
+
+  <div class="outline-box" style="margin-top: 32px">
+    <mat-table #table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+        <mat-cell *matCellDef="let timp">{{timp.id}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="data">
+        <mat-header-cell *matHeaderCellDef>Data</mat-header-cell>
+        <mat-cell *matCellDef="let timp">{{timp.an}}/{{timp.luna}}/{{timp.ziLuna}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="ziAn">
+        <mat-header-cell *matHeaderCellDef>Zi an/saptamana an</mat-header-cell>
+        <mat-cell *matCellDef="let timp">{{timp.ziAn}}/{{timp.ziSaptamana}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="ora">
+        <mat-header-cell *matHeaderCellDef>Ora</mat-header-cell>
+        <mat-cell *matCellDef="let timp">{{timp.ora}}:{{timp.minut}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="weekend">
+        <mat-header-cell *matHeaderCellDef>Weekend</mat-header-cell>
+        <mat-cell *matCellDef="let timp">
+          <mat-checkbox [checked]="timp.anulat" [disabled]="true">
+          </mat-checkbox>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+    </mat-table>
+
+    <mat-paginator [length]="dataSource.lessonsSubject.getValue().length" [pageSize]="20"
+                   [pageSizeOptions]="[20, 50, 100]"></mat-paginator>
+
+  </div>
+</div>

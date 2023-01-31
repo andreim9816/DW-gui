@@ -21,6 +21,10 @@ export class DestinatieService {
     return this.http.get<[DestinatieDto]>(URL.DESTINATIE_URL_OLTP, httpOptions);
   }
 
+  getAllWH(): Observable<[DestinatieDto]> {
+    return this.http.get<[DestinatieDto]>(URL.DESTINATIE_URL_WH, httpOptions);
+  }
+
   add(body: any): Observable<DestinatieDto> {
     return this.http.post<DestinatieDto>(URL.DESTINATIE_URL_OLTP, body, httpOptions);
   }

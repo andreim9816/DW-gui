@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {URL} from "../util/URL";
 import {OperatorZborDto} from "../model/OperatorZborDto";
 import {MetodaPlataDto} from "../model/MetodaPlataDto";
+import {DestinatieDto} from "../model/DestinatieDto";
 
 const httpOptions = {
   // headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -18,6 +19,10 @@ export class MetodaPlataService {
 
   getAll(): Observable<[MetodaPlataDto]> {
     return this.http.get<[MetodaPlataDto]>(URL.METODA_PLATA_URL_OLTP, httpOptions);
+  }
+
+  getAllWH(): Observable<[MetodaPlataDto]> {
+    return this.http.get<[MetodaPlataDto]>(URL.METODA_PLATA_URL_WH, httpOptions);
   }
 
   add(body: any): Observable<MetodaPlataDto> {

@@ -21,6 +21,10 @@ export class ClasaZborService {
     return this.http.get<[ClasaZborDto]>(URL.CLASA_ZBOR_URL_OLTP, httpOptions);
   }
 
+  getAllWH(): Observable<[ClasaZborDto]> {
+    return this.http.get<[ClasaZborDto]>(URL.CLASA_ZBOR_URL_WH, httpOptions);
+  }
+
   add(body: any): Observable<ClasaZborDto> {
     return this.http.post<ClasaZborDto>(URL.CLASA_ZBOR_URL_OLTP, body, httpOptions);
   }

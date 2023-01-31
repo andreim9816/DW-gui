@@ -36,6 +36,12 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import { RezervariComponent } from './rezervari/rezervari.component';
 import {CdkListbox} from "@angular/cdk/listbox";
 import { NewRezervareComponent } from './new-rezervare/new-rezervare.component';
+import { OperatorWhComponent } from './wh/operator-wh/operator-wh.component';
+import { MetodaPlataWhComponent } from './wh/metoda-plata-wh/metoda-plata-wh.component';
+import { ClasaZborWhComponent } from './wh/clasa-zbor-wh/clasa-zbor-wh.component';
+import { DestinatieWhComponent } from './wh/destinatie-wh/destinatie-wh.component';
+import { ZborWhComponent } from './wh/zbor-wh/zbor-wh.component';
+import { TimpWhComponent } from './wh/timp-wh/timp-wh.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -55,7 +61,13 @@ import { NewRezervareComponent } from './new-rezervare/new-rezervare.component';
     ZborComponent,
     NewZborComponent,
     RezervariComponent,
-    NewRezervareComponent
+    NewRezervareComponent,
+    OperatorWhComponent,
+    MetodaPlataWhComponent,
+    ClasaZborWhComponent,
+    DestinatieWhComponent,
+    ZborWhComponent,
+    TimpWhComponent
   ],
     imports: [
         BrowserModule,

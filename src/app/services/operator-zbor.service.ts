@@ -20,6 +20,10 @@ export class OperatorZborService {
     return this.http.get<[OperatorZborDto]>(URL.OPERATOR_ZBOR_URL_OLTP, httpOptions);
   }
 
+  getAllWH(): Observable<[OperatorZborDto]> {
+    return this.http.get<[OperatorZborDto]>(URL.OPERATOR_ZBOR_URL_WH, httpOptions);
+  }
+
   add(body: any): Observable<OperatorZborDto> {
     return this.http.post<OperatorZborDto>(URL.OPERATOR_ZBOR_URL_OLTP, body, httpOptions);
   }

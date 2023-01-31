@@ -1,0 +1,47 @@
+<div class="container">
+
+  <div class="outline-box" style="margin-top: 32px">
+    <mat-table #table [dataSource]="dataSource">
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+        <mat-cell *matCellDef="let zbor">{{zbor.id}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="aeronavaId">
+        <mat-header-cell *matHeaderCellDef>Aeronava Id</mat-header-cell>
+        <mat-cell *matCellDef="let zbor">{{zbor.aeronavaId}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="durata">
+        <mat-header-cell *matHeaderCellDef>Durata</mat-header-cell>
+        <mat-cell *matCellDef="let zbor">{{zbor.durata}} (minute)</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="distanta">
+        <mat-header-cell *matHeaderCellDef>Distanta</mat-header-cell>
+        <mat-cell *matCellDef="let zbor">{{zbor.distanta}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="totalLocuri">
+        <mat-header-cell *matHeaderCellDef>Total locuri</mat-header-cell>
+        <mat-cell *matCellDef="let zbor">{{zbor.totalLocuri}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="anulat">
+        <mat-header-cell *matHeaderCellDef>Anulat</mat-header-cell>
+        <mat-cell *matCellDef="let zbor">
+          <mat-checkbox [checked]="zbor.anulat" [disabled]="true">
+          </mat-checkbox>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+    </mat-table>
+
+    <mat-paginator [length]="dataSource.lessonsSubject.getValue().length" [pageSize]="20"
+                   [pageSizeOptions]="[20, 50, 100]"></mat-paginator>
+
+  </div>
+</div>
