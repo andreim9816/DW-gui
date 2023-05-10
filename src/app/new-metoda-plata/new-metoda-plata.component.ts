@@ -27,7 +27,7 @@ export class NewMetodaPlataComponent {
         denumire: this.form.value.denumire
       };
 
-      this.service.add(body).subscribe(() => {
+      this.service.addGlobal(body).subscribe(() => {
         window.location.reload();
       });
     }

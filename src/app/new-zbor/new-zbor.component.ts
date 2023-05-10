@@ -11,6 +11,7 @@ export class NewZborComponent {
   form: FormGroup;
   filterDateFrom: Date;
   filterDateTo: Date;
+
   constructor(private fb: FormBuilder,
               private service: ZborService) {
     this.createForm();
@@ -47,7 +48,7 @@ export class NewZborComponent {
       // dataPlecare.setHours(this.form.value.oraSosire)
       // dataPlecare.setMinutes(this.form.value.minutSosire)
 
-      let durata = Math.round( dataSosire.getTime() - dataPlecare.getTime()) / 60000;
+      let durata = Math.round(dataSosire.getTime() - dataPlecare.getTime()) / 60000;
       const body = {
         id: this.form.value.id,
         operatorId: this.form.value.operatorId,
@@ -64,7 +65,7 @@ export class NewZborComponent {
 
       console.log(body);
 
-      this.service.add(body).subscribe(() => {
+      this.service.addGlobal(body).subscribe(() => {
         window.location.reload();
       });
     }

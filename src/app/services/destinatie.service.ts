@@ -2,9 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {URL} from "../util/URL";
-import {OperatorZborDto} from "../model/OperatorZborDto";
 import {DestinatieDto} from "../model/DestinatieDto";
-import {MetodaPlataDto} from "../model/MetodaPlataDto";
 
 const httpOptions = {
   // headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -17,15 +15,27 @@ export class DestinatieService {
   constructor(private http: HttpClient) {
   }
 
-  getAll(): Observable<[DestinatieDto]> {
-    return this.http.get<[DestinatieDto]>(URL.DESTINATIE_URL_OLTP, httpOptions);
+  getAllGlobal(): Observable<[DestinatieDto]> {
+    return this.http.get<[DestinatieDto]>(URL.DESTINATIE_URL_GLOBAL, httpOptions);
   }
 
-  getAllWH(): Observable<[DestinatieDto]> {
-    return this.http.get<[DestinatieDto]>(URL.DESTINATIE_URL_WH, httpOptions);
+  getAllLow(): Observable<[DestinatieDto]> {
+    return this.http.get<[DestinatieDto]>(URL.DESTINATIE_URL_LOW, httpOptions);
   }
 
-  add(body: any): Observable<DestinatieDto> {
-    return this.http.post<DestinatieDto>(URL.DESTINATIE_URL_OLTP, body, httpOptions);
+  getAllNonLow(): Observable<[DestinatieDto]> {
+    return this.http.get<[DestinatieDto]>(URL.DESTINATIE_URL_NON_LOW, httpOptions);
+  }
+
+  addGlobal(body: any): Observable<DestinatieDto> {
+    return this.http.post<DestinatieDto>(URL.DESTINATIE_URL_GLOBAL, body, httpOptions);
+  }
+
+  addLow(body: any): Observable<DestinatieDto> {
+    return this.http.post<DestinatieDto>(URL.DESTINATIE_URL_LOW, body, httpOptions);
+  }
+
+  addNonLow(body: any): Observable<DestinatieDto> {
+    return this.http.post<DestinatieDto>(URL.DESTINATIE_URL_NON_LOW, body, httpOptions);
   }
 }

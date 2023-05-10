@@ -1,28 +1,28 @@
 import {Component, OnInit} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {ActivatedRoute, Router} from "@angular/router";
-import {MetodaPlataService} from "../services/metoda-plata.service";
-import {MetodaPlataDto} from "../model/MetodaPlataDto";
-import {NewMetodaPlataComponent} from "../new-metoda-plata/new-metoda-plata.component";
+import {ClasaZborDto} from "../model/ClasaZborDto";
+import {ClasaZborService} from "../services/clasa-zbor.service";
 import {MatDialog} from "@angular/material/dialog";
+import {NewClasaZborComponent} from "../new-clasa-zbor/new-clasa-zbor.component";
 import {take} from "rxjs";
 import {Type} from "../app.routes";
 
 @Component({
-  selector: 'app-metoda-plata',
-  templateUrl: './metoda-plata.component.html',
-  styleUrls: ['./metoda-plata.component.css']
+  selector: 'app-clasa-zbor',
+  templateUrl: './clasa-zbor-component.component.html',
+  styleUrls: ['./clasa-zbor-component.component.scss']
 })
-export class MetodaPlataComponent implements OnInit {
+export class ClasaZborComponent implements OnInit {
 
-  dataSource: MatTableDataSource<MetodaPlataDto> = new MatTableDataSource<MetodaPlataDto>();
+  dataSource: MatTableDataSource<ClasaZborDto> = new MatTableDataSource<ClasaZborDto>();
   readonly displayedColumns = ['id', 'denumire'];
 
   constructor(
-    private service: MetodaPlataService,
+    private service: ClasaZborService,
     private route: ActivatedRoute,
     private router: Router,
-    private dialog: MatDialog) {
+    public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -53,7 +53,7 @@ export class MetodaPlataComponent implements OnInit {
     })
   }
 
-  openDialogNewMetodaPlata(): void {
-    this.dialog.open(NewMetodaPlataComponent);
+  openDialogNewClasaZbor(): void {
+    this.dialog.open(NewClasaZborComponent);
   }
 }

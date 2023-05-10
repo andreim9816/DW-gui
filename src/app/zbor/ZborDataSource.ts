@@ -26,7 +26,7 @@ export class ZborDataSource implements DataSource<ZborDto> {
 
     this.loadingSubject.next(true);
 
-    this.zborService.getAll(filter, sortDirection, pageIndex, pageSize).pipe(
+    this.zborService.getAllGlobal(filter, sortDirection, pageIndex, pageSize).pipe(
       catchError(() => of([])),
       finalize(() => this.loadingSubject.next(false))
     )

@@ -26,7 +26,7 @@ export class RezervariDataSource implements DataSource<RezervareDto> {
 
     this.loadingSubject.next(true);
 
-    this.rezervariService.getAll(filter, sortDirection, pageIndex, pageSize).pipe(
+    this.rezervariService.getAllGlobal(filter, sortDirection, pageIndex, pageSize).pipe(
       catchError(() => of([])),
       finalize(() => this.loadingSubject.next(false))
     )

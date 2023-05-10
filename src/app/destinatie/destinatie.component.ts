@@ -5,6 +5,8 @@ import {DestinatieDto} from "../model/DestinatieDto";
 import {DestinatieService} from "../services/destinatie.service";
 import {NewDestinatieComponent} from "../new-destinatie/new-destinatie.component";
 import {MatDialog} from "@angular/material/dialog";
+import {take} from "rxjs";
+import {Type} from "../app.routes";
 
 @Component({
   selector: 'app-destinatie',
@@ -17,19 +19,37 @@ export class DestinatieComponent implements OnInit {
   readonly displayedColumns = ['id', 'oras', 'stat'];
 
   constructor(
-    private destinatieService: DestinatieService,
+    private service: DestinatieService,
     private route: ActivatedRoute,
     private router: Router,
     private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.destinatieService.getAll().subscribe(data => {
-        this.dataSource.data = data;
-      }, err => {
-        this.router.navigate(['/']);
-      });
+    this.route.data.pipe(take(1)).subscribe(params => {
+      switch (params['type']) {
+        case Type.GLOBAL:
+          this.service.getAllGlobal().subscribe(data => {
+            this.dataSource.data = data;
+          }, err => {
+            this.router.navigate(['/']);
+          });
+          break;
+        case Type.LOWCOST:
+          this.service.getAllLow().subscribe(data => {
+            this.dataSource.data = data;
+          }, err => {
+            this.router.navigate(['/']);
+          });
+          break;
+        case Type.NONLOWCOST:
+          this.service.getAllNonLow().subscribe(data => {
+            this.dataSource.data = data;
+          }, err => {
+            this.router.navigate(['/']);
+          });
+          break;
+      }
     })
   }
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ClasaZborService} from "../services/clasa-zbor.service";
 
@@ -9,6 +9,7 @@ import {ClasaZborService} from "../services/clasa-zbor.service";
 })
 export class NewClasaZborComponent {
   form: FormGroup;
+
   constructor(private fb: FormBuilder,
               private service: ClasaZborService) {
     this.createForm();
@@ -26,7 +27,7 @@ export class NewClasaZborComponent {
         denumire: this.form.value.denumire
       };
 
-      this.service.add(body).subscribe(() => {
+      this.service.addGlobal(body).subscribe(() => {
         window.location.reload();
       });
     }

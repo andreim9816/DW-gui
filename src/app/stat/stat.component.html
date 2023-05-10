@@ -1,28 +1,21 @@
 <div class="container">
 
   <div>
-    <button (click)="openDialogNewOperatorZbor()" mat-button class="btn btn-primary">+</button>
+    <button (click)="openDialogNewStat()" mat-button class="btn btn-primary">+</button>
   </div>
 
   <div class="outline-box" style="margin-top: 32px">
 
     <mat-table #table [dataSource]="dataSource">
+
       <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
-        <mat-cell *matCellDef="let operatorZbor">{{operatorZbor.id}}</mat-cell>
+        <mat-cell *matCellDef="let stat">{{stat.id}}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="nume">
         <mat-header-cell *matHeaderCellDef>Nume</mat-header-cell>
-        <mat-cell *matCellDef="let operatorZbor">{{operatorZbor.nume}}</mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="tip">
-        <mat-header-cell *matHeaderCellDef>Low cost</mat-header-cell>
-        <mat-cell *matCellDef="let operatorZbor">
-          <mat-checkbox [checked]="operatorZbor.tip =='Low cost'" [disabled]="true">
-          </mat-checkbox>
-        </mat-cell>
+        <mat-cell *matCellDef="let stat">{{stat.nume}}</mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

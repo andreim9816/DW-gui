@@ -3,7 +3,6 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {URL} from "../util/URL";
 import {ZborDto} from "../model/ZborDto";
-import {ZborDtoWH} from "../model/ZborDtoWH";
 
 const httpOptions = {
   // headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -16,9 +15,9 @@ export class ZborService {
   constructor(private http: HttpClient) {
   }
 
-  getAll(filter = '', sortOrder = 'desc',
-         pageNumber = 0, pageSize = 20): Observable<[ZborDto]> {
-    return this.http.get<[ZborDto]>(URL.ZBOR_URL_OLTP,
+  getAllGlobal(filter = '', sortOrder = 'desc',
+               pageNumber = 0, pageSize = 20): Observable<[ZborDto]> {
+    return this.http.get<[ZborDto]>(URL.ZBOR_URL_GLOBAL,
       {
         params: new HttpParams()
           .set('filter', filter)
@@ -28,9 +27,9 @@ export class ZborService {
       });
   }
 
-  getAllWH(filter = '', sortOrder = 'desc',
-           pageNumber = 0, pageSize = 20): Observable<[ZborDtoWH]> {
-    return this.http.get<[ZborDtoWH]>(URL.ZBOR_URL_WH,
+  getAllLow(filter = '', sortOrder = 'desc',
+            pageNumber = 0, pageSize = 20): Observable<[ZborDto]> {
+    return this.http.get<[ZborDto]>(URL.ZBOR_URL_LOW,
       {
         params: new HttpParams()
           .set('filter', filter)
@@ -40,7 +39,27 @@ export class ZborService {
       });
   }
 
-  add(body: any): Observable<ZborDto> {
-    return this.http.post<ZborDto>(URL.ZBOR_URL_OLTP, body, httpOptions);
+  getAllNonLow(filter = '', sortOrder = 'desc',
+               pageNumber = 0, pageSize = 20): Observable<[ZborDto]> {
+    return this.http.get<[ZborDto]>(URL.ZBOR_URL_NON_LOW,
+      {
+        params: new HttpParams()
+          .set('filter', filter)
+          .set('sortOrder', sortOrder)
+          .set('pageNumber', pageNumber)
+          .set('pageSize', pageSize.toString())
+      });
+  }
+
+  addGlobal(body: any): Observable<ZborDto> {
+    return this.http.post<ZborDto>(URL.ZBOR_URL_GLOBAL, body, httpOptions);
+  }
+
+  addLow(body: any): Observable<ZborDto> {
+    return this.http.post<ZborDto>(URL.ZBOR_URL_LOW, body, httpOptions);
+  }
+
+  addNonLow(body: any): Observable<ZborDto> {
+    return this.http.post<ZborDto>(URL.ZBOR_URL_NON_LOW, body, httpOptions);
   }
 }

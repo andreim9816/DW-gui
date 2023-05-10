@@ -1,23 +1,20 @@
 <div class="container default-padding">
-  <h2>Operator nou</h2>
+  <h2>Aeronava noua</h2>
 
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
     <div class="row-1">
       <div class="column-1">
-
         <mat-form-field appearance="fill">
           <input formControlName="id" matInput placeholder="Id" type="text">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <input formControlName="nume" matInput placeholder="Nume" type="text">
+          <input formControlName="producator" matInput placeholder="Producator" type="text">
         </mat-form-field>
 
-        <div class="row-1">
-          <label for="tip">Low cost</label>
-          <input id="tip" formControlName="tip" type="checkbox">
-        </div>
-        <!--        <mat-checkbox  [checked]="generateCbxValue()" [disabled]="!isGlobal()">Low cost</mat-checkbox>-->
+        <mat-form-field appearance="fill">
+          <input formControlName="nume" matInput placeholder="Nume" type="text">
+        </mat-form-field>
 
         <button class="btn btn-primary" type="submit">Save</button>
       </div>

@@ -31,7 +31,7 @@ export class NewDestinatieComponent {
         stat: this.form.value.stat
       };
 
-      this.service.add(body).subscribe(() => {
+      this.service.addGlobal(body).subscribe(() => {
         window.location.reload();
       });
     }

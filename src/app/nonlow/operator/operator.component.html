@@ -12,17 +12,9 @@
         <mat-cell *matCellDef="let operatorZbor">{{operatorZbor.id}}</mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="nume">
-        <mat-header-cell *matHeaderCellDef>Nume</mat-header-cell>
-        <mat-cell *matCellDef="let operatorZbor">{{operatorZbor.nume}}</mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="tip">
-        <mat-header-cell *matHeaderCellDef>Low cost</mat-header-cell>
-        <mat-cell *matCellDef="let operatorZbor">
-          <mat-checkbox [checked]="operatorZbor.tip =='Low cost'" [disabled]="true">
-          </mat-checkbox>
-        </mat-cell>
+      <ng-container matColumnDef="denumire">
+        <mat-header-cell *matHeaderCellDef>Denumire</mat-header-cell>
+        <mat-cell *matCellDef="let operatorZbor">{{operatorZbor.denumire}}</mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

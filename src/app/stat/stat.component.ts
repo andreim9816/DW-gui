@@ -1,25 +1,25 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {ActivatedRoute, Router} from "@angular/router";
-import {MetodaPlataService} from "../services/metoda-plata.service";
-import {MetodaPlataDto} from "../model/MetodaPlataDto";
-import {NewMetodaPlataComponent} from "../new-metoda-plata/new-metoda-plata.component";
 import {MatDialog} from "@angular/material/dialog";
 import {take} from "rxjs";
 import {Type} from "../app.routes";
+import {NewStatComponent} from "../new-stat/new-stat.component";
+import {StatDto} from "../model/StatDto";
+import {StatService} from "../services/stat.service";
 
 @Component({
-  selector: 'app-metoda-plata',
-  templateUrl: './metoda-plata.component.html',
-  styleUrls: ['./metoda-plata.component.css']
+  selector: 'app-stat',
+  templateUrl: './stat.component.html',
+  styleUrls: ['./stat.component.css']
 })
-export class MetodaPlataComponent implements OnInit {
-
-  dataSource: MatTableDataSource<MetodaPlataDto> = new MatTableDataSource<MetodaPlataDto>();
-  readonly displayedColumns = ['id', 'denumire'];
+export class StatComponent {
+  dataSource: MatTableDataSource<StatDto> = new MatTableDataSource<StatDto>();
+  readonly displayedColumns = ['id', 'nume'];
+  type: Type;
 
   constructor(
-    private service: MetodaPlataService,
+    private service: StatService,
     private route: ActivatedRoute,
     private router: Router,
     private dialog: MatDialog) {
@@ -27,7 +27,8 @@ export class MetodaPlataComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.pipe(take(1)).subscribe(params => {
-      switch (params['type']) {
+      this.type = params['type'];
+      switch (this.type) {
         case Type.GLOBAL:
           this.service.getAllGlobal().subscribe(data => {
             this.dataSource.data = data;
@@ -53,7 +54,7 @@ export class MetodaPlataComponent implements OnInit {
     })
   }
 
-  openDialogNewMetodaPlata(): void {
-    this.dialog.open(NewMetodaPlataComponent);
+  openDialogNewStat(): void {
+    this.dialog.open(NewStatComponent, {data: this.type});
   }
 }

@@ -1,4 +1,5 @@
 export interface OperatorZborDto {
   id: string;
-  denumire: string;
+  nume: string;
+  tip: string;
 }

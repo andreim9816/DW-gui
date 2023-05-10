@@ -2,8 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {URL} from "../util/URL";
-import {OperatorZborDto} from "../model/OperatorZborDto";
-import {MetodaPlataDto} from "../model/MetodaPlataDto";
 import {ClasaZborDto} from "../model/ClasaZborDto";
 
 const httpOptions = {
@@ -17,15 +15,27 @@ export class ClasaZborService {
   constructor(private http: HttpClient) {
   }
 
-  getAll(): Observable<[ClasaZborDto]> {
-    return this.http.get<[ClasaZborDto]>(URL.CLASA_ZBOR_URL_OLTP, httpOptions);
+  getAllGlobal(): Observable<[ClasaZborDto]> {
+    return this.http.get<[ClasaZborDto]>(URL.CLASA_ZBOR_URL_GLOBAL, httpOptions);
   }
 
-  getAllWH(): Observable<[ClasaZborDto]> {
-    return this.http.get<[ClasaZborDto]>(URL.CLASA_ZBOR_URL_WH, httpOptions);
+  getAllLow(): Observable<[ClasaZborDto]> {
+    return this.http.get<[ClasaZborDto]>(URL.CLASA_ZBOR_URL_LOW, httpOptions);
   }
 
-  add(body: any): Observable<ClasaZborDto> {
-    return this.http.post<ClasaZborDto>(URL.CLASA_ZBOR_URL_OLTP, body, httpOptions);
+  getAllNonLow(): Observable<[ClasaZborDto]> {
+    return this.http.get<[ClasaZborDto]>(URL.CLASA_ZBOR_URL_NON_LOW, httpOptions);
+  }
+
+  addGlobal(body: any): Observable<ClasaZborDto> {
+    return this.http.post<ClasaZborDto>(URL.CLASA_ZBOR_URL_GLOBAL, body, httpOptions);
+  }
+
+  addLow(body: any): Observable<ClasaZborDto> {
+    return this.http.post<ClasaZborDto>(URL.CLASA_ZBOR_URL_LOW, body, httpOptions);
+  }
+
+  addNonLow(body: any): Observable<ClasaZborDto> {
+    return this.http.post<ClasaZborDto>(URL.CLASA_ZBOR_URL_NON_LOW, body, httpOptions);
   }
 }

@@ -1,28 +1,28 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {ActivatedRoute, Router} from "@angular/router";
-import {MetodaPlataService} from "../services/metoda-plata.service";
-import {MetodaPlataDto} from "../model/MetodaPlataDto";
-import {NewMetodaPlataComponent} from "../new-metoda-plata/new-metoda-plata.component";
 import {MatDialog} from "@angular/material/dialog";
 import {take} from "rxjs";
 import {Type} from "../app.routes";
+import {AeronavaDto} from "../model/AeronavaDto";
+import {AeronavaService} from "../services/aeronava.service";
+import {NewAeronavaComponent} from "../new-aeronava/new-aeronava.component";
 
 @Component({
-  selector: 'app-metoda-plata',
-  templateUrl: './metoda-plata.component.html',
-  styleUrls: ['./metoda-plata.component.css']
+  selector: 'app-aeronava',
+  templateUrl: './aeronava.component.html',
+  styleUrls: ['./aeronava.component.css']
 })
-export class MetodaPlataComponent implements OnInit {
+export class AeronavaComponent {
 
-  dataSource: MatTableDataSource<MetodaPlataDto> = new MatTableDataSource<MetodaPlataDto>();
-  readonly displayedColumns = ['id', 'denumire'];
+  dataSource: MatTableDataSource<AeronavaDto> = new MatTableDataSource<AeronavaDto>();
+  readonly displayedColumns = ['id', 'nume', 'producator'];
 
   constructor(
-    private service: MetodaPlataService,
+    private service: AeronavaService,
     private route: ActivatedRoute,
     private router: Router,
-    private dialog: MatDialog) {
+    public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -53,7 +53,7 @@ export class MetodaPlataComponent implements OnInit {
     })
   }
 
-  openDialogNewMetodaPlata(): void {
-    this.dialog.open(NewMetodaPlataComponent);
+  openDialogNewAeronava(): void {
+    this.dialog.open(NewAeronavaComponent);
   }
 }

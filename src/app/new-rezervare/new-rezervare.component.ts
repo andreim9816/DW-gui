@@ -42,7 +42,7 @@ export class NewRezervareComponent {
         metodaPlataId: this.form.value.metodaPlataId,
       };
 
-      this.service.add(body).subscribe(() => {
+      this.service.addGlobal(body).subscribe(() => {
         window.location.reload();
       });
     }

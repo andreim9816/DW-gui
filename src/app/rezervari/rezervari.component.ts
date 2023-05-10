@@ -38,9 +38,7 @@ export class RezervariComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.paginator.page
-      .pipe(
-        tap(() => this.loadRezervari())
-      )
+      .pipe(tap(() => this.loadRezervari()))
       .subscribe();
   }
 

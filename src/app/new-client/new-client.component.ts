@@ -1,7 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ClasaZborService} from "../services/clasa-zbor.service";
-import {ClientService} from "../services/client.service";
 
 @Component({
   selector: 'app-new-client',
@@ -10,8 +8,10 @@ import {ClientService} from "../services/client.service";
 })
 export class NewClientComponent {
   form: FormGroup;
+
   constructor(private fb: FormBuilder,
-              private service: ClientService) {
+              // private service: ClientService
+  ) {
     this.createForm();
   }
 
@@ -33,9 +33,9 @@ export class NewClientComponent {
         numarTelefon: this.form.value.numarTelefon,
       };
 
-      this.service.add(body).subscribe(() => {
-        window.location.reload();
-      });
+      // this.service.add(body).subscribe(() => {
+      //   window.location.reload();
+      // });
     }
   }
 }

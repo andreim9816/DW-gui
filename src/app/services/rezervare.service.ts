@@ -3,7 +3,6 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {URL} from "../util/URL";
 import {RezervareDto} from "../model/RezervareDto";
-import {RezervareDtoWH} from "../model/RezervareDtoWH";
 
 const httpOptions = {
   // headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -16,9 +15,9 @@ export class RezervareService {
   constructor(private http: HttpClient) {
   }
 
-  getAll(filter = '', sortOrder = 'desc',
-         pageNumber = 0, pageSize = 20): Observable<[RezervareDto]> {
-    return this.http.get<[RezervareDto]>(URL.REZERVARE_URL_OLTP,
+  getAllGlobal(filter = '', sortOrder = 'desc',
+               pageNumber = 0, pageSize = 20): Observable<[RezervareDto]> {
+    return this.http.get<[RezervareDto]>(URL.REZERVARE_URL_GLOBAL,
       {
         params: new HttpParams()
           .set('filter', filter)
@@ -28,9 +27,9 @@ export class RezervareService {
       });
   }
 
-  getAllWH(filter = '', sortOrder = 'desc',
-           pageNumber = 0, pageSize = 20): Observable<[RezervareDtoWH]> {
-    return this.http.get<[RezervareDtoWH]>(URL.REZERVARE_URL_WH,
+  getAllLow(filter = '', sortOrder = 'desc',
+            pageNumber = 0, pageSize = 20): Observable<[RezervareDto]> {
+    return this.http.get<[RezervareDto]>(URL.REZERVARE_URL_LOW,
       {
         params: new HttpParams()
           .set('filter', filter)
@@ -40,7 +39,27 @@ export class RezervareService {
       });
   }
 
-  add(body: any): Observable<RezervareDto> {
-    return this.http.post<RezervareDto>(URL.REZERVARE_URL_OLTP, body, httpOptions);
+  getAllNonLow(filter = '', sortOrder = 'desc',
+               pageNumber = 0, pageSize = 20): Observable<[RezervareDto]> {
+    return this.http.get<[RezervareDto]>(URL.REZERVARE_URL_NON_LOW,
+      {
+        params: new HttpParams()
+          .set('filter', filter)
+          .set('sortOrder', sortOrder)
+          .set('pageNumber', pageNumber)
+          .set('pageSize', pageSize.toString())
+      });
+  }
+
+  addGlobal(body: any): Observable<RezervareDto> {
+    return this.http.post<RezervareDto>(URL.REZERVARE_URL_GLOBAL, body, httpOptions);
+  }
+
+  addLow(body: any): Observable<RezervareDto> {
+    return this.http.post<RezervareDto>(URL.REZERVARE_URL_LOW, body, httpOptions);
+  }
+
+  addNonLow(body: any): Observable<RezervareDto> {
+    return this.http.post<RezervareDto>(URL.REZERVARE_URL_NON_LOW, body, httpOptions);
   }
 }
