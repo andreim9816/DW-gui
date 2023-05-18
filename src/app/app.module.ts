@@ -40,6 +40,8 @@ import { AeronavaComponent } from './aeronava/aeronava.component';
 import { NewAeronavaComponent } from './new-aeronava/new-aeronava.component';
 import { StatComponent } from './stat/stat.component';
 import { NewStatComponent } from './new-stat/new-stat.component';
+import { PlataComponent } from './plata/plata.component';
+import { NewPlataComponent } from './new-plata/new-plata.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -64,6 +66,8 @@ import { NewStatComponent } from './new-stat/new-stat.component';
     NewAeronavaComponent,
     StatComponent,
     NewStatComponent,
+    PlataComponent,
+    NewPlataComponent,
   ],
   imports: [
     BrowserModule,

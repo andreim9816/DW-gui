@@ -1,7 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {MetodaPlataService} from "../services/metoda-plata.service";
 import {RezervareService} from "../services/rezervare.service";
+import {Type} from "../app.routes";
+import {ActivatedRoute, Router} from "@angular/router";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-new-rezervare',
@@ -10,21 +12,26 @@ import {RezervareService} from "../services/rezervare.service";
 })
 export class NewRezervareComponent {
   form: FormGroup;
+  type: Type;
 
   constructor(private fb: FormBuilder,
-              private service: RezervareService) {
+              private service: RezervareService,
+              private route: ActivatedRoute,
+              private router: Router,
+              private dialogRef: MatDialogRef<NewRezervareComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: Type) {
     this.createForm();
+    this.type = data;
+    console.log(this.type);
   }
 
   createForm(): void {
     this.form = this.fb.group({
       nrPasageriFemei: [null, Validators.required],
       nrPasageriBarbati: [null, Validators.required],
-      sumaTotala: [null, Validators.required],
       clientId: [null, Validators.required],
       zborId: [null, Validators.required],
       clasaZborId: [null, Validators.required],
-      metodaPlataId: [null, Validators.required],
     });
   }
 
@@ -35,16 +42,35 @@ export class NewRezervareComponent {
         nrPasageriFemei: this.form.value.nrPasageriFemei,
         nrPasageriBarbati: this.form.value.nrPasageriBarbati,
         dataRezervare: new Date(),
-        sumaTotala: this.form.value.sumaTotala,
         clientId: this.form.value.clientId,
         zborId: this.form.value.zborId,
         clasaZborId: this.form.value.clasaZborId,
-        metodaPlataId: this.form.value.metodaPlataId,
       };
 
-      this.service.addGlobal(body).subscribe(() => {
-        window.location.reload();
-      });
+      switch (this.type) {
+        case Type.GLOBAL:
+          this.service.addGlobal(body).subscribe(data => {
+            this.router.navigate(['/']);
+          }, err => {
+            window.location.reload();
+          });
+          break;
+        case Type.LOWCOST:
+          this.service.addLow(body).subscribe(data => {
+            this.router.navigate(['/']);
+          }, err => {
+            window.location.reload();
+          });
+          break;
+        case Type.NONLOWCOST:
+          this.service.addNonLow(body).subscribe(data => {
+            this.router.navigate(['/']);
+          }, err => {
+            window.location.reload();
+          });
+          break;
+      }
+      this.dialogRef.close();
     }
   }
 }

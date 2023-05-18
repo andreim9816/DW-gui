@@ -15,6 +15,7 @@ import {Type} from "../app.routes";
 })
 export class MetodaPlataComponent implements OnInit {
 
+  type: Type;
   dataSource: MatTableDataSource<MetodaPlataDto> = new MatTableDataSource<MetodaPlataDto>();
   readonly displayedColumns = ['id', 'denumire'];
 
@@ -27,7 +28,8 @@ export class MetodaPlataComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.pipe(take(1)).subscribe(params => {
-      switch (params['type']) {
+      this.type = params['type'];
+      switch (this.type) {
         case Type.GLOBAL:
           this.service.getAllGlobal().subscribe(data => {
             this.dataSource.data = data;
@@ -54,6 +56,6 @@ export class MetodaPlataComponent implements OnInit {
   }
 
   openDialogNewMetodaPlata(): void {
-    this.dialog.open(NewMetodaPlataComponent);
+    this.dialog.open(NewMetodaPlataComponent,{data: this.type});
   }
 }

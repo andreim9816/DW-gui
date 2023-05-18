@@ -1,25 +1,25 @@
 <div class="container default-padding">
-  <h2>Destinatie noua</h2>
+  <h2>Plata noua</h2>
 
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
     <div class="row-1">
       <div class="column-1">
 
         <mat-form-field appearance="fill">
-          <input formControlName="id" matInput placeholder="Id" type="text">
+          <input formControlName="sumaTotala" matInput placeholder="Suma totala" type="text">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <input formControlName="oras" matInput placeholder="Oras" type="text">
+          <input formControlName="metodaPlataId" matInput placeholder="Metoda plata id" type="text">
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <input formControlName="statId" matInput placeholder="Stat Id" type="text">
+          <input formControlName="rezervareId" matInput placeholder="Rezervare id" type="text">
         </mat-form-field>
+
 
         <button class="btn btn-primary" type="submit">Save</button>
       </div>
     </div>
-
   </form>
 </div>

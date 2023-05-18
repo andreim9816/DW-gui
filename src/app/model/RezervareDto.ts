@@ -4,9 +4,7 @@ export interface RezervareDto {
   nrPasageriFemei: number;
   nrPasageriBarbati: number;
   dataRezervare: Date;
-  sumaTotala: number;
   clientId: number;
   zborId: number;
   clasaZborId: number;
-  metodaPlataId: number;
 }

@@ -1,24 +1,24 @@
 import {Component, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {MetodaPlataService} from "../services/metoda-plata.service";
+import {Type} from "../app.routes";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {Type} from "../app.routes";
+import {PlataService} from "../services/plata.service";
 
 @Component({
-  selector: 'app-new-metoda-plata',
-  templateUrl: './new-metoda-plata.component.html',
-  styleUrls: ['./new-metoda-plata.component.scss']
+  selector: 'app-new-plata',
+  templateUrl: './new-plata.component.html',
+  styleUrls: ['./new-plata.component.css']
 })
-export class NewMetodaPlataComponent {
+export class NewPlataComponent {
   form: FormGroup;
   type: Type;
 
   constructor(private fb: FormBuilder,
-              private service: MetodaPlataService,
+              private service: PlataService,
               private route: ActivatedRoute,
               private router: Router,
-              private dialogRef: MatDialogRef<NewMetodaPlataComponent>,
+              private dialogRef: MatDialogRef<NewPlataComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Type) {
     this.createForm();
     this.type = data;
@@ -26,14 +26,20 @@ export class NewMetodaPlataComponent {
 
   createForm(): void {
     this.form = this.fb.group({
-      denumire: [null, Validators.required],
+      sumaTotala: [null, Validators.required],
+      metodaPlataId: [null, Validators.required],
+      rezervareId: [null, Validators.required]
     });
   }
 
   onSubmit(): void {
     if (this.form.valid) {
       const body = {
-        denumire: this.form.value.denumire
+        id: null,
+        dataPlata: new Date(),
+        sumaTotala: this.form.value.sumaTotala,
+        metodaPlataId: this.form.value.metodaPlataId,
+        rezervareId: this.form.value.rezervareId
       };
 
       switch (this.type) {

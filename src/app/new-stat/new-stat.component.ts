@@ -38,8 +38,6 @@ export class NewStatComponent {
         nume: this.form.value.nume,
       };
 
-      console.log(this.type);
-
       switch (this.type) {
         case Type.GLOBAL:
           this.service.addGlobal(body).subscribe(data => {

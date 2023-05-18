@@ -4,8 +4,9 @@ import {MatDialog} from "@angular/material/dialog";
 import {ZborService} from "../services/zbor.service";
 import {NewZborComponent} from "../new-zbor/new-zbor.component";
 import {MatPaginator} from "@angular/material/paginator";
-import {tap} from "rxjs";
+import {take, tap} from "rxjs";
 import {ZborDataSource} from "./ZborDataSource";
+import {Type} from "../app.routes";
 
 @Component({
   selector: 'app-zbor',
@@ -14,6 +15,7 @@ import {ZborDataSource} from "./ZborDataSource";
 })
 export class ZborComponent implements OnInit, AfterViewInit {
 
+  type: Type;
   dataSource: ZborDataSource;
   readonly displayedColumns = ['id', 'operatorId', 'aeronavaId', 'durata', 'distanta',
     'totalLocuri', 'anulat', 'dataPlecare', 'dataSosire', 'locatiePlecareId', 'locateSosireId'];
@@ -28,12 +30,16 @@ export class ZborComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.dataSource = new ZborDataSource(this.zborService);
-    this.dataSource.loadZboruri('', 'desc', 0, 20);
+    this.route.data.pipe(take(1)).subscribe(params => {
+      this.type = params['type'];
+
+      this.dataSource = new ZborDataSource(this.zborService);
+      this.dataSource.loadZboruri('', 'desc', 0, 20, this.type);
+    });
   }
 
   openDialogNewZbor(): void {
-    this.dialog.open(NewZborComponent);
+    this.dialog.open(NewZborComponent, {data: this.type});
   }
 
   ngAfterViewInit() {
@@ -49,6 +55,7 @@ export class ZborComponent implements OnInit, AfterViewInit {
       '',
       'desc',
       this.paginator.pageIndex,
-      this.paginator.pageSize);
+      this.paginator.pageSize,
+      this.type);
   }
 }

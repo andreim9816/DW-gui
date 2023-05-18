@@ -15,8 +15,9 @@ import {NewAeronavaComponent} from "../new-aeronava/new-aeronava.component";
 })
 export class AeronavaComponent {
 
+  type: Type;
   dataSource: MatTableDataSource<AeronavaDto> = new MatTableDataSource<AeronavaDto>();
-  readonly displayedColumns = ['id', 'nume', 'producator'];
+  readonly displayedColumns = ['id', 'nume'];
 
   constructor(
     private service: AeronavaService,
@@ -27,7 +28,9 @@ export class AeronavaComponent {
 
   ngOnInit(): void {
     this.route.data.pipe(take(1)).subscribe(params => {
-      switch (params['type']) {
+      this.type = params['type'];
+      console.log(this.type);
+      switch (this.type) {
         case Type.GLOBAL:
           this.service.getAllGlobal().subscribe(data => {
             this.dataSource.data = data;
@@ -54,6 +57,6 @@ export class AeronavaComponent {
   }
 
   openDialogNewAeronava(): void {
-    this.dialog.open(NewAeronavaComponent);
+    this.dialog.open(NewAeronavaComponent, {data: this.type});
   }
 }

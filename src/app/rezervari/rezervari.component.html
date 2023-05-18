@@ -21,11 +21,6 @@
         <mat-cell *matCellDef="let rezervare">{{rezervare.dataRezervare | date:'MM-dd-yyyy H:mm'}}</mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="sumaTotala">
-        <mat-header-cell *matHeaderCellDef>Suma</mat-header-cell>
-        <mat-cell *matCellDef="let rezervare">{{rezervare.sumaTotala}}</mat-cell>
-      </ng-container>
-
       <ng-container matColumnDef="clientId">
         <mat-header-cell *matHeaderCellDef>Client id</mat-header-cell>
         <mat-cell *matCellDef="let rezervare">{{rezervare.clientId}}</mat-cell>
@@ -39,11 +34,6 @@
       <ng-container matColumnDef="clasaZborId">
         <mat-header-cell *matHeaderCellDef>Clasa zbor</mat-header-cell>
         <mat-cell *matCellDef="let rezervare">{{rezervare.clasaZborId}}</mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="metodaPlataId">
-        <mat-header-cell *matHeaderCellDef>Metoda plata id</mat-header-cell>
-        <mat-cell *matCellDef="let rezervare">{{rezervare.metodaPlataId}}</mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

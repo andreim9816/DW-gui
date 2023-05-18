@@ -15,8 +15,9 @@ import {Type} from "../app.routes";
 })
 export class DestinatieComponent implements OnInit {
 
+  type: Type;
   dataSource: MatTableDataSource<DestinatieDto> = new MatTableDataSource<DestinatieDto>();
-  readonly displayedColumns = ['id', 'oras', 'stat'];
+  readonly displayedColumns = ['id', 'oras', 'statId'];
 
   constructor(
     private service: DestinatieService,
@@ -27,7 +28,8 @@ export class DestinatieComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.pipe(take(1)).subscribe(params => {
-      switch (params['type']) {
+      this.type = params['type'];
+      switch (this.type) {
         case Type.GLOBAL:
           this.service.getAllGlobal().subscribe(data => {
             this.dataSource.data = data;
@@ -54,6 +56,6 @@ export class DestinatieComponent implements OnInit {
   }
 
   openDialogNewDestinatie(): void {
-    this.dialog.open(NewDestinatieComponent);
+    this.dialog.open(NewDestinatieComponent, {data: this.type});
   }
 }

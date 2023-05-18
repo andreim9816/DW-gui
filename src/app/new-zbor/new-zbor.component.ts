@@ -1,6 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ZborService} from "../services/zbor.service";
+import {Type} from "../app.routes";
+import {ActivatedRoute, Router} from "@angular/router";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-new-zbor',
@@ -11,27 +14,26 @@ export class NewZborComponent {
   form: FormGroup;
   filterDateFrom: Date;
   filterDateTo: Date;
+  type: Type;
 
   constructor(private fb: FormBuilder,
-              private service: ZborService) {
+              private service: ZborService, private route: ActivatedRoute,
+              private router: Router,
+              private dialogRef: MatDialogRef<NewZborComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: Type) {
     this.createForm();
+    this.type = data;
   }
 
   createForm(): void {
     this.form = this.fb.group({
-
       operatorId: [null, Validators.required],
       aeronavaId: [null, Validators.required],
       distanta: [null, Validators.required],
       totalLocuri: [null, Validators.required],
 
       dataPlecare: [null, Validators.required],
-      // oraPlecare: [null, Validators.required],
-      // minutPlecare: [null, Validators.required],
-
       dataSosire: [null, Validators.required],
-      // oraSosire: [null, Validators.required],
-      // minutSosire: [null, Validators.required],
 
       locatiePlecareId: [null, Validators.required],
       locatieSosireId: [null, Validators.required],
@@ -41,12 +43,7 @@ export class NewZborComponent {
   onSubmit(): void {
     if (this.form.valid) {
       let dataPlecare = new Date(this.form.value.dataPlecare);
-      // dataPlecare.setHours(this.form.value.oraPlecare)
-      // dataPlecare.setMinutes(this.form.value.minutPlecare)
-
       let dataSosire = new Date(this.form.value.dataSosire);
-      // dataPlecare.setHours(this.form.value.oraSosire)
-      // dataPlecare.setMinutes(this.form.value.minutSosire)
 
       let durata = Math.round(dataSosire.getTime() - dataPlecare.getTime()) / 60000;
       const body = {
@@ -63,11 +60,30 @@ export class NewZborComponent {
         locatieSosireId: this.form.value.locatieSosireId,
       };
 
-      console.log(body);
-
-      this.service.addGlobal(body).subscribe(() => {
-        window.location.reload();
-      });
+      switch (this.type) {
+        case Type.GLOBAL:
+          this.service.addGlobal(body).subscribe(data => {
+            this.router.navigate(['/']);
+          }, err => {
+            window.location.reload();
+          });
+          break;
+        case Type.LOWCOST:
+          this.service.addLow(body).subscribe(data => {
+            this.router.navigate(['/']);
+          }, err => {
+            window.location.reload();
+          });
+          break;
+        case Type.NONLOWCOST:
+          this.service.addNonLow(body).subscribe(data => {
+            this.router.navigate(['/']);
+          }, err => {
+            window.location.reload();
+          });
+          break;
+      }
+      this.dialogRef.close();
     }
   }
 

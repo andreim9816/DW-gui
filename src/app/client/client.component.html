@@ -31,6 +31,19 @@
         <mat-cell *matCellDef="let client">{{client.numarTelefon}}</mat-cell>
       </ng-container>
 
+      <ng-container matColumnDef="dataInregistrare">
+        <mat-header-cell *matHeaderCellDef>Data inregistrare</mat-header-cell>
+        <mat-cell *matCellDef="let client">{{client.dataInregistrare | date:'MM-dd-yyyy H:mm'}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="premium">
+        <mat-header-cell *matHeaderCellDef>Premium</mat-header-cell>
+        <mat-cell *matCellDef="let client">
+          <mat-checkbox [checked]="client.premium" [disabled]="true">
+          </mat-checkbox>
+        </mat-cell>
+      </ng-container>
+
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 

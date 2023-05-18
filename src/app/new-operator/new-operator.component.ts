@@ -21,7 +21,6 @@ export class NewOperatorComponent {
               private dialogRef: MatDialogRef<NewOperatorComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Type) {
     this.type = data;
-    console.log(this.type);
     this.createForm();
   }
 

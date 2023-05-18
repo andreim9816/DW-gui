@@ -2,10 +2,11 @@ import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
-import {tap} from "rxjs";
+import {take, tap} from "rxjs";
 import {RezervareService} from "../services/rezervare.service";
 import {RezervariDataSource} from "./RezervariDataSource";
 import {NewRezervareComponent} from "../new-rezervare/new-rezervare.component";
+import {Type} from "../app.routes";
 
 @Component({
   selector: 'app-rezervari',
@@ -14,9 +15,9 @@ import {NewRezervareComponent} from "../new-rezervare/new-rezervare.component";
 })
 export class RezervariComponent implements OnInit, AfterViewInit {
 
+  type: Type;
   dataSource: RezervariDataSource;
-  readonly displayedColumns = ['id', 'pasageri', 'dataRezervare',
-    'sumaTotala', 'clientId', 'zborId', 'clasaZborId', 'metodaPlataId'];
+  readonly displayedColumns = ['id', 'pasageri', 'dataRezervare', 'clientId', 'zborId', 'clasaZborId'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -28,12 +29,15 @@ export class RezervariComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.dataSource = new RezervariDataSource(this.rezervariService);
-    this.dataSource.loadRezervari('', 'desc', 0, 50);
+    this.route.data.pipe(take(1)).subscribe(params => {
+      this.type = params['type'];
+      this.dataSource = new RezervariDataSource(this.rezervariService);
+      this.dataSource.loadRezervari('', 'desc', 0, 50, this.type);
+    });
   }
 
   openDialogNewRezervare(): void {
-    this.dialog.open(NewRezervareComponent);
+    this.dialog.open(NewRezervareComponent, {data: this.type});
   }
 
   ngAfterViewInit() {
@@ -47,6 +51,7 @@ export class RezervariComponent implements OnInit, AfterViewInit {
       '',
       'desc',
       this.paginator.pageIndex,
-      this.paginator.pageSize);
+      this.paginator.pageSize,
+      this.type);
   }
 }

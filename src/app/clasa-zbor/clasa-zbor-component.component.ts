@@ -15,6 +15,7 @@ import {Type} from "../app.routes";
 })
 export class ClasaZborComponent implements OnInit {
 
+  type: Type;
   dataSource: MatTableDataSource<ClasaZborDto> = new MatTableDataSource<ClasaZborDto>();
   readonly displayedColumns = ['id', 'denumire'];
 
@@ -27,7 +28,8 @@ export class ClasaZborComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.pipe(take(1)).subscribe(params => {
-      switch (params['type']) {
+      this.type = params['type'];
+      switch (this.type) {
         case Type.GLOBAL:
           this.service.getAllGlobal().subscribe(data => {
             this.dataSource.data = data;
@@ -54,6 +56,6 @@ export class ClasaZborComponent implements OnInit {
   }
 
   openDialogNewClasaZbor(): void {
-    this.dialog.open(NewClasaZborComponent);
+    this.dialog.open(NewClasaZborComponent, {data:this.type});
   }
 }

@@ -8,6 +8,7 @@ import {ZborComponent} from "./zbor/zbor.component";
 import {RezervariComponent} from "./rezervari/rezervari.component";
 import {AeronavaComponent} from "./aeronava/aeronava.component";
 import {StatComponent} from "./stat/stat.component";
+import {PlataComponent} from "./plata/plata.component";
 
 export enum Type {
   GLOBAL,
@@ -25,6 +26,7 @@ export const ROUTES: Routes = [
   {path: 'client-global', component: ClientComponent, data: {type: Type.GLOBAL}},
   {path: 'zbor-global', component: ZborComponent, data: {type: Type.GLOBAL}},
   {path: 'rezervare-global', component: RezervariComponent, data: {type: Type.GLOBAL}},
+  {path: 'plata-global', component: PlataComponent, data: {type: Type.GLOBAL}},
 
   {path: 'aeronava-low', component: AeronavaComponent, data: {type: Type.LOWCOST}},
   {path: 'stat-low', component: StatComponent, data: {type: Type.LOWCOST}},
@@ -34,6 +36,7 @@ export const ROUTES: Routes = [
   {path: 'destinatie-low', component: DestinatieComponent, data: {type: Type.LOWCOST}},
   {path: 'zbor-low', component: ZborComponent, data: {type: Type.LOWCOST}},
   {path: 'rezervare-low', component: RezervariComponent, data: {type: Type.LOWCOST}},
+  {path: 'plata-low', component: PlataComponent, data: {type: Type.LOWCOST}},
 
   {path: 'aeronava-non-low', component: AeronavaComponent, data: {type: Type.NONLOWCOST}},
   {path: 'stat-non-low', component: StatComponent, data: {type: Type.NONLOWCOST}},
@@ -43,6 +46,7 @@ export const ROUTES: Routes = [
   {path: 'destinatie-non-low', component: DestinatieComponent, data: {type: Type.NONLOWCOST}},
   {path: 'zbor-non-low', component: ZborComponent, data: {type: Type.NONLOWCOST}},
   {path: 'rezervare-non-low', component: RezervariComponent, data: {type: Type.NONLOWCOST}},
+  {path: 'plata-non-low', component: PlataComponent, data: {type: Type.NONLOWCOST}},
 
   {path: '**', redirectTo: ''}
 ];

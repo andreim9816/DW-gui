@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ClasaZborService} from "../services/clasa-zbor.service";
 import {DestinatieService} from "../services/destinatie.service";
+import {Type} from "../app.routes";
+import {ActivatedRoute, Router} from "@angular/router";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-new-destinatie',
@@ -10,16 +12,23 @@ import {DestinatieService} from "../services/destinatie.service";
 })
 export class NewDestinatieComponent {
   form: FormGroup;
+  type: Type;
+
   constructor(private fb: FormBuilder,
-              private service: DestinatieService) {
+              private service: DestinatieService,
+              private route: ActivatedRoute,
+              private router: Router,
+              private dialogRef: MatDialogRef<NewDestinatieComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: Type) {
     this.createForm();
+    this.type = data;
   }
 
   createForm(): void {
     this.form = this.fb.group({
       id: [null, Validators.required],
       oras: [null, Validators.required],
-      stat: [null, Validators.required],
+      statId: [null, Validators.required],
     });
   }
 
@@ -28,12 +37,33 @@ export class NewDestinatieComponent {
       const body = {
         id: this.form.value.id,
         oras: this.form.value.oras,
-        stat: this.form.value.stat
+        statId: this.form.value.statId
       };
 
-      this.service.addGlobal(body).subscribe(() => {
-        window.location.reload();
-      });
+      switch (this.type) {
+        case Type.GLOBAL:
+          this.service.addGlobal(body).subscribe(data => {
+            this.router.navigate(['/']);
+          }, err => {
+            window.location.reload();
+          });
+          break;
+        case Type.LOWCOST:
+          this.service.addLow(body).subscribe(data => {
+            this.router.navigate(['/']);
+          }, err => {
+            window.location.reload();
+          });
+          break;
+        case Type.NONLOWCOST:
+          this.service.addNonLow(body).subscribe(data => {
+            this.router.navigate(['/']);
+          }, err => {
+            window.location.reload();
+          });
+          break;
+      }
+      this.dialogRef.close();
     }
   }
 }
